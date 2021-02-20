@@ -34,6 +34,7 @@
     "request": "^2.88.2",
     "require-directory": "^2.1.1",
     "sequelize": "^5.22.3",
+    "sequelize-auto": "^0.7.11",
     "sequelize-cli": "^6.2.0"
   },
   "devDependencies": {
