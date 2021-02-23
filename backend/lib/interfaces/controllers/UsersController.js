@@ -5,6 +5,7 @@ const ListUsers = require('../../application/use_cases/ListUsers');
 const CreateUser = require('../../application/use_cases/CreateUser');
 const GetUser = require('../../application/use_cases/GetUser');
 const DeleteUser = require('../../application/use_cases/DeleteUser');
+const {generateTimestampUnix} = require('./../../application/utilities/general_functions')
 
 module.exports = {
 
@@ -14,10 +15,12 @@ module.exports = {
     const serviceLocator = request.server.app.serviceLocator;
 
     // Input
-    const { firstName, lastName, email, password } = request.payload;
-
+    const { full_name, last_name, email, pass, status, admin, parent_id } = request.payload;
+    
+    const register_time = await generateTimestampUnix()
+        
     // Treatment
-    const user = await CreateUser(firstName, lastName, email, password, serviceLocator);
+    const user = await CreateUser(full_name, last_name, email, pass, register_time, last_entry, status, admin, parent_id, serviceLocator);
 
     // Output
     return serviceLocator.userSerializer.serialize(user);

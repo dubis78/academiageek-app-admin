@@ -24,7 +24,7 @@ const createServer = async () => {
       plugin: HapiSwagger,
       options: {
         info: {
-          title: 'Test API Documentation',
+          title: 'Academia Geek App Documentation',
           version: Package.version,
         },
       }

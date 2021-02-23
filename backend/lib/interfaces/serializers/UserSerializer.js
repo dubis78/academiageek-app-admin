@@ -2,10 +2,16 @@
 
 const _serializeSingleUser = (user) => {
   return {
-    'id': user.id,
-    'first-name': user.firstName,
-    'last-name': user.lastName,
-    'email': user.email,
+    "id" : user.id, 
+    "full_name" : user.full_name, 
+    "last_name" : user.last_name, 
+    "email" : user.email, 
+    "pass" : user.pass, 
+    "register_time" : user.register_time, 
+    "last_entry" : user.last_entry, 
+    "status" : user.status, 
+    "admin" : user.admin, 
+    "parent_id" : user.parent_id
   };
 };
 

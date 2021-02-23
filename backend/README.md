@@ -102,3 +102,6 @@ It may have a constructor to define its dependencies (concrete implementations -
 **Be careful! A use case must have only one precise business responsibility!**
 
 A use case can call objects in the same layer (such as data repositories) or in the domain layer.
+
+## Model Generator
+sequelize-auto -o "./lib/infrastructure/orm/sequelize/models" --cf p -d academia-geek-app -h localhost -u postgres -p 5432 -x postgres -e postgres
