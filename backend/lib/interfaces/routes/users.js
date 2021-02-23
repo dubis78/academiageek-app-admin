@@ -12,10 +12,12 @@ module.exports = {
         method: 'GET',
         path: '/users',
         handler: UsersController.findUsers,
-        options: {
+        config: {
+          auth: 'oauth-jwt',
+        //  handler: (request) => request.auth.credentials.uid,
           description: 'List all users',
           tags: ['api'],
-        },
+        }
       },
       {
         method: 'POST',
@@ -31,7 +33,7 @@ module.exports = {
         path: '/users/{id}',
         handler: UsersController.getUser,
         options: {
-          description: 'Get a user by its {id}',
+          description: 'Get a user for your {id}',
           tags: ['api'],
         },
       },
@@ -41,6 +43,15 @@ module.exports = {
         handler: UsersController.deleteUser,
         options: {
           description: 'Delete a user',
+          tags: ['api'],
+        },
+      },
+      {
+        method: 'PUT',
+        path: '/users/{id}',
+        handler: UsersController.updateUser,
+        options: {
+          description: 'Update an existing user',
           tags: ['api'],
         },
       },

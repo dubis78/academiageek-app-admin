@@ -35,7 +35,6 @@ module.exports = {
 
     // Context
     const serviceLocator = request.server.app.serviceLocator;
-
     // Input
     const authorizationHeader = request.headers.authorization;
     if (!authorizationHeader || !authorizationHeader.startsWith('Bearer ')) {

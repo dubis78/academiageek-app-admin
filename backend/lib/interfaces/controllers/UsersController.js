@@ -5,25 +5,53 @@ const ListUsers = require('../../application/use_cases/ListUsers');
 const CreateUser = require('../../application/use_cases/CreateUser');
 const GetUser = require('../../application/use_cases/GetUser');
 const DeleteUser = require('../../application/use_cases/DeleteUser');
-const {generateTimestampUnix} = require('./../../application/utilities/general_functions')
-
+const UpdateUser  = require('../../application/use_cases/UpdateUser');
 module.exports = {
 
-  async createUser(request) {
+  async createUser(request, h) {
 
     // Context
     const serviceLocator = request.server.app.serviceLocator;
 
     // Input
     const { full_name, last_name, email, pass, status, admin, parent_id } = request.payload;
-    
-    const register_time = await generateTimestampUnix()
-        
-    // Treatment
-    const user = await CreateUser(full_name, last_name, email, pass, register_time, last_entry, status, admin, parent_id, serviceLocator);
 
+    try {
+      // Treatment
+      const user = await CreateUser(full_name, last_name, email, pass, null, status, admin, parent_id, serviceLocator);
+
+      // Output
+      return serviceLocator.userSerializer.serialize(user);
+
+    } catch (error) {
+      let message = "An internal server error occurred"
+      if (error.parent != undefined && error.parent.constraint == "uq_email_auth_user")
+        message = "This email is already registered"
+      else
+        console.log(error);
+      return h.response({ statusCode: 500, error: "Internal Server Error", mensaje: message }).code(500)
+    }
+  },
+
+
+  async updateUser(request) {
+    // Context
+    const serviceLocator = request.server.app.serviceLocator;
+
+    // Input
+    const userId = request.params.id;
+    const { full_name, last_name, email, pass, status, admin, parent_id } = request.payload;
+
+    // Treatment
+  
+    const user = await UpdateUser(userId, full_name, last_name, email, pass, status, admin, parent_id, serviceLocator);
+  
     // Output
-    return serviceLocator.userSerializer.serialize(user);
+    if (user) {
+      return serviceLocator.userSerializer.serialize(user);
+    } else {
+      return Boom.notFound('User not found');
+    }
   },
 
   async findUsers(request) {
@@ -51,8 +79,9 @@ module.exports = {
 
     // Output
     if (!user) {
-      return Boom.notFound();
+      return Boom.notFound('User not found');
     }
+
     return serviceLocator.userSerializer.serialize(user);
   },
 

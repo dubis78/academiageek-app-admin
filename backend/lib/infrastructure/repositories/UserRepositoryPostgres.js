@@ -1,6 +1,7 @@
 'use strict';
 
 const sequelize = require('../orm/sequelize/sequelize');
+const bcrypt = require('bcrypt')
 const User = require('../../domain/AuthUsers');
 const UserRepository = require('../../domain/UserRepository');
 
@@ -13,13 +14,15 @@ module.exports = class extends UserRepository {
   }
 
   async persist(userEntity) {
-    const {full_name, last_name, email, pass, register_time, last_entry, status, admin, parent_id} = userEntity;
 
-    const seqUser = await this.model.create({full_name, last_name, email, pass, register_time, last_entry, status, admin, parent_id});
-            
-    await seqUser.save();
+    const { full_name, last_name, email, pass, register_time, status, admin, parent_id } = userEntity;
 
-    return new User(seqUser.id, seqUser.full_name, seqUser.last_name, seqUser.email, seqUser.pass, seqUser.register_time, seqUser.last_entry, seqUser.status, seqUser.admin, seqUser.parent_id);
+    const seqUser = await this.model.create({ full_name, last_name, email, pass, register_time, status, admin, parent_id });
+
+    let user = new User(seqUser.id, seqUser.full_name, seqUser.last_name, seqUser.email, seqUser.pass, seqUser.register_time, seqUser.last_entry, seqUser.status, seqUser.admin, seqUser.parent_id, seqUser.upgrade_time);
+
+    return user
+
   }
 
   async merge(userEntity) {
@@ -27,10 +30,10 @@ module.exports = class extends UserRepository {
 
     if (!seqUser) return false;
 
-    const { full_name, last_name, email, pass, register_time, last_entry, status, admin, parent_id } = userEntity;
-    await seqUser.update({ full_name, last_name, email, pass, register_time, last_entry, status, admin, parent_id });
+    const { full_name, last_name, email, pass, upgrade_time, last_entry, status, admin, parent_id } = userEntity;
+    await seqUser.update({ full_name, last_name, email, pass, last_entry, status, admin, parent_id, upgrade_time },  {where: {id: userEntity.id}});
 
-    return new User(seqUser.id, seqUser.full_name, seqUser.last_name, seqUser.email, seqUser.pass, seqUser.register_time, seqUser.last_entry, seqUser.status, seqUser.admin, seqUser.parent_id);
+    return new User(seqUser.id, seqUser.full_name, seqUser.last_name, seqUser.email, seqUser.pass, seqUser.register_time, seqUser.last_entry, seqUser.status, seqUser.admin, seqUser.parent_id, seqUser.upgrade_time);
   }
 
   async remove(userId) {
@@ -43,12 +46,15 @@ module.exports = class extends UserRepository {
 
   async get(userId) {
     const seqUser = await this.model.findByPk(userId);
-    return new User(seqUser.full_name, seqUser.last_name, seqUser.email, seqUser.pass, seqUser.register_time, seqUser.last_entry, seqUser.status, seqUser.admin, seqUser.parent_id);
+    if(seqUser)
+      return new User(seqUser.id, seqUser.full_name, seqUser.last_name, seqUser.email, seqUser.pass, seqUser.register_time, seqUser.last_entry, seqUser.status, seqUser.admin, seqUser.parent_id, seqUser.upgrade_time);
+    else
+      return false;
   }
 
   async getByEmail(userEmail) {
     const seqUser = await this.model.findOne({ where: { email: userEmail } });
-    return new User(seqUser.full_name, seqUser.last_name, seqUser.email, seqUser.pass, seqUser.register_time, seqUser.last_entry, seqUser.status, seqUser.admin, seqUser.parent_id);
+    return new User(seqUser.id, seqUser.full_name, seqUser.last_name, seqUser.email, seqUser.pass, seqUser.register_time, seqUser.last_entry, seqUser.status, seqUser.admin, seqUser.parent_id, seqUser.upgrade_time);
   }
 
   async find() {

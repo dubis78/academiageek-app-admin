@@ -16,7 +16,7 @@ module.exports = {
       path: '/oauth/token',
       handler: AuthorizationController.getAccessToken,
       options: {
-        description: 'Return an OAuth 2 access token',
+        description: 'Devolve un token de acceso de OAuth 2',
         tags: ['api'],
       },
     });

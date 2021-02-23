@@ -8,6 +8,7 @@ const _serializeSingleUser = (user) => {
     "email" : user.email, 
     "pass" : user.pass, 
     "register_time" : user.register_time, 
+    "upgrade_time" : user.upgrade_time, 
     "last_entry" : user.last_entry, 
     "status" : user.status, 
     "admin" : user.admin, 
