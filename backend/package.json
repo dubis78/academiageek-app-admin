@@ -1,5 +1,5 @@
 {
-  "name": "Academia Geek App",
+  "name": "academia-geek-app",
   "version": "1.0.0",
   "description": "Backend para la aplicación de Academia Geek. La aplicación toma las buenas practicas del repositorio https://github.com/jbuget/nodejs-clean-architecture-app",
   "main": "index.js",

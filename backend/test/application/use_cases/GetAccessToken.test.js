@@ -6,14 +6,15 @@ const MockAccessTokenManager = class extends AccessTokenManager {};
 const mockAccessTokenManager = new MockAccessTokenManager();
 
 const GetAccessToken = require('../../../lib/application/use_cases/GetAccessToken');
+const { encryptPassword } = require('../../../lib/application/utilities/general_functions');
 
 test('should resolve with a generated JWT access token when credentials are ok', async () => {
   // given
-  mockUserRepository.getByEmail = () => { return { password: 'abcd-1234' } };
+  mockUserRepository.getByEmail = async() => { return { pass: await encryptPassword('123') } };
   mockAccessTokenManager.generate = () => 'generated-jwt-access-token';
 
   // when
-  const accessToken = await GetAccessToken('john@mail.com', 'abcd-1234', {
+  const accessToken = await GetAccessToken('john@mail.com', '123', {
     userRepository: mockUserRepository,
     accessTokenManager: mockAccessTokenManager
   });
@@ -38,7 +39,7 @@ test('should reject when user was not found', () => {
 
 test('should reject when password did not match', () => {
   // given
-  mockUserRepository.getByEmail = () => { return { password: 'abcd-1234' } };
+  mockUserRepository.getByEmail = async() => { return { pass: await encryptPassword('abcd-1234') } };
 
   // when
   const promise = GetAccessToken('john@mail.com', 'wrong-password', {
