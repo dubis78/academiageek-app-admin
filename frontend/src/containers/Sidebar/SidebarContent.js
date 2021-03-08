@@ -1,6 +1,7 @@
 import React from "react";
 import {Menu} from "antd";
 import {Link} from "react-router-dom";
+import { FileDoneOutlined } from '@ant-design/icons';
 
 import CustomScrollbars from "util/CustomScrollbars";
 import SidebarLogo from "./SidebarLogo";
@@ -53,38 +54,54 @@ const SidebarContent = ({sidebarCollapsed, setSidebarCollapsed}) => {
             mode="inline">
 
             <MenuItemGroup key="main" className="gx-menu-group" title={<IntlMessages id="sidebar.topics"/>}>
-              <SubMenu key="topics" popupClassName={getNavStyleSubMenuClass(navStyle)}
-                       title={<span> <i className="icon icon-apps"/>
-                         <span><IntlMessages id="sidebar.topics.js"/></span></span>}>
-                <Menu.Item key="components/table/basic">
-                  <Link to="/components/table/basic">
-                    <i className="icon icon-copy"/>
-                    <span><IntlMessages id="sidebar.topics.js.TheoryDocumentation"/></span>
+              <SubMenu key="courses" popupClassName={getNavStyleSubMenuClass(navStyle)}
+                title={<span><Link to="/main/widgets"><i className="icon icon-apps"/>
+                <IntlMessages id="sidebar.topics.courses"/></Link></span>}>
+                <Menu.Item key="components/dataEntry/checkbox">
+                  <Link to="/components/dataEntry/checkbox">
+                    <i className="icon icon-listing-dbrd"/>
+                    <span><IntlMessages id="sidebar.topics.courses.cohorts"/></span>
                   </Link>
                 </Menu.Item>
-                <Menu.Item key="components/table/data">
-                  <Link to="/components/table/data">
-                    <i className="icon icon-icon"/>
-                    <span><IntlMessages id="sidebar.topics.js.Challenges"/></span>
+              </SubMenu>
+              <SubMenu key="prospects" popupClassName={getNavStyleSubMenuClass(navStyle)}
+                title={<span><Link to="/main/widgets"><i className="icon icon-user"/>
+                <IntlMessages id="sidebar.topics.prospects"/></Link></span>}>
+                <Menu.Item key="components/dataEntry/checkbox">
+                  <Link to="/components/dataEntry/checkbox">
+                    <i className="icon icon-files"/>
+                    <span><IntlMessages id="sidebar.topics.prospects.applicants"/></span>
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="components/dataEntry/checkbox">
                   <Link to="/components/dataEntry/checkbox">
-                    <i className="icon icon-listing-dbrd"/>
-                    <span><IntlMessages id="sidebar.topics.js.Deliverables"/></span>
+                    <i className="icon icon-files"/>
+                    <span><IntlMessages id="sidebar.topics.prospects.training"/></span>
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="components/dataEntry/checkbox">
+                  <Link to="/components/dataEntry/checkbox">
+                    <i className="icon icon-files"/>
+                    <span><IntlMessages id="sidebar.topics.prospects.graduates"/></span>
                   </Link>
                 </Menu.Item>
               </SubMenu>
-
-              <Menu.Item key="main/widgets">
-                <Link to="/main/widgets"><i className="icon icon-widgets"/>
-                  <span><IntlMessages id="sidebar.topics.css"/></span></Link>
-              </Menu.Item>
-
-              <Menu.Item key="documents/changelog">
-                <Link to="/documents/changelog"><i className="icon icon-card"/>
-                  <span><IntlMessages id="sidebar.topics.Git"/></span></Link>
-              </Menu.Item>
+              <SubMenu key="tests" popupClassName={getNavStyleSubMenuClass(navStyle)}
+                title={<span><Link to="/main/widgets"><i className="icon icon-editor"/>
+                <IntlMessages id="sidebar.topics.tests"/></Link></span>}>
+                <Menu.Item key="components/dataEntry/checkbox">
+                  <Link to="/components/dataEntry/checkbox">
+                    <i className="icon icon-files"/>
+                    <span><IntlMessages id="sidebar.topics.tests.bank-test"/></span>
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="components/dataEntry/checkbox">
+                  <Link to="/components/dataEntry/checkbox">
+                    <i className="icon icon-files"/>
+                    <span><IntlMessages id="sidebar.topics.tests.technicals"/></span>
+                  </Link>
+                </Menu.Item>
+              </SubMenu>
 
             </MenuItemGroup>
 
