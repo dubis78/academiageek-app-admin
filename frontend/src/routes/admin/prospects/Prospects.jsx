@@ -4,7 +4,6 @@ import { SearchOutlined } from "@ant-design/icons";
 
 
 const Prospects = () => {
-  // const actionRef = useRef();
   const [searchText, setSearchText] = useState('');
   const [searchedColumn, setSearchedColumn] = useState('');
 
@@ -77,29 +76,31 @@ const dataCols=[
 ];
 
 const filts=[['Frontend','Backend'],[],['CC','TI','CE','PA'],[],['F','M','N/A'],[],[],[],['Formandose','Interesado','Adecuado'],[]];
+const configTable=[false,false,false,false,false,false,false,false,false,false];
+// const breakPoints=['']
 
-
-const colsMaker=(cols,filts)=>{
+const colsMaker=(cols,filts,configTable)=>{
   return(
     cols.map((col,index)=>{
       return(
       filts[index].length>0
-        ? {title:col, dataIndex:`col${index}`,
-          filters: filts[index].map((filt,i)=>{return(
+        ? {title:col, dataIndex:`col${index}`, fixed:configTable[index],
+          filters: filts[index].map((filt)=>{return(
             {text:filt, value:filt}
         )}),
         // record.col8.indexOf(value) === 0
         onFilter: (value, record) => record[`col${index}`].indexOf(value) === 0
 
       }
-        : {title:col, dataIndex:`col${index}`, render: index===1 ? (text) => <a>{text}</a> : null,
+        : {title:col, dataIndex:`col${index}`, fixed:configTable[index],
+          render: index===1 ? (text) => <a>{text}</a> : null,
           ...getColumnSearchProps(col,`col${index}`),
       }
     )})
   )
 }
 
-const columns =colsMaker(dataCols,filts);
+const columns =colsMaker(dataCols,filts,configTable);
 
 const data = [
   {
@@ -153,6 +154,7 @@ const data = [
         pagination={{position:['bottomCenter']}}
         columns={columns}
         dataSource={data}
+        scroll={{ x: 1000, y: 300 }}
       />
     </Card>
   );
