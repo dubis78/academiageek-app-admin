@@ -1,7 +1,6 @@
 import React from "react";
 import {Menu} from "antd";
 import {Link} from "react-router-dom";
-import { FileDoneOutlined } from '@ant-design/icons';
 
 import CustomScrollbars from "util/CustomScrollbars";
 import SidebarLogo from "./SidebarLogo";
@@ -57,15 +56,15 @@ const SidebarContent = ({sidebarCollapsed, setSidebarCollapsed}) => {
               <SubMenu key="courses" popupClassName={getNavStyleSubMenuClass(navStyle)}
                 title={<span><Link to="/main/widgets"><i className="icon icon-apps"/>
                 <IntlMessages id="sidebar.topics.courses"/></Link></span>}>
-                <Menu.Item key="components/dataEntry/checkbox">
-                  <Link to="/components/dataEntry/checkbox">
+                <Menu.Item key="table">
+                  <Link to="/components/table/basic">
                     <i className="icon icon-listing-dbrd"/>
                     <span><IntlMessages id="sidebar.topics.courses.cohorts"/></span>
                   </Link>
                 </Menu.Item>
               </SubMenu>
               <SubMenu key="prospects" popupClassName={getNavStyleSubMenuClass(navStyle)}
-                title={<span><Link to="/main/widgets"><i className="icon icon-user"/>
+                title={<span><Link to="/admin/prospects"><i className="icon icon-user"/>
                 <IntlMessages id="sidebar.topics.prospects"/></Link></span>}>
                 <Menu.Item key="components/dataEntry/checkbox">
                   <Link to="/components/dataEntry/checkbox">
@@ -73,7 +72,7 @@ const SidebarContent = ({sidebarCollapsed, setSidebarCollapsed}) => {
                     <span><IntlMessages id="sidebar.topics.prospects.applicants"/></span>
                   </Link>
                 </Menu.Item>
-                <Menu.Item key="components/dataEntry/checkbox">
+                <Menu.Item key="components/dataEntry/check">
                   <Link to="/components/dataEntry/checkbox">
                     <i className="icon icon-files"/>
                     <span><IntlMessages id="sidebar.topics.prospects.training"/></span>
@@ -89,13 +88,13 @@ const SidebarContent = ({sidebarCollapsed, setSidebarCollapsed}) => {
               <SubMenu key="tests" popupClassName={getNavStyleSubMenuClass(navStyle)}
                 title={<span><Link to="/main/widgets"><i className="icon icon-editor"/>
                 <IntlMessages id="sidebar.topics.tests"/></Link></span>}>
-                <Menu.Item key="components/dataEntry/checkbox">
+                <Menu.Item key="components/dataEntry/checkbx">
                   <Link to="/components/dataEntry/checkbox">
                     <i className="icon icon-files"/>
                     <span><IntlMessages id="sidebar.topics.tests.bank-test"/></span>
                   </Link>
                 </Menu.Item>
-                <Menu.Item key="components/dataEntry/checkbox">
+                <Menu.Item key="components/dataEntry/checkbo">
                   <Link to="/components/dataEntry/checkbox">
                     <i className="icon icon-files"/>
                     <span><IntlMessages id="sidebar.topics.tests.technicals"/></span>
