@@ -1,24 +1,28 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('auth_user_status', {
+  return sequelize.define('main_languages', {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    user_status: {
-      type: DataTypes.STRING(100),
-      allowNull: true
+    language_name: {
+      type: DataTypes.STRING(20),
+      allowNull: false
+    },
+    priority: {
+      type: DataTypes.INTEGER,
+      allowNull: false
     }
   }, {
     sequelize,
-    tableName: 'auth_user_status',
-    schema: 'auth',
+    tableName: 'main_languages',
+    schema: 'main',
     timestamps: false,
     indexes: [
       {
-        name: "auth_user_status_pkey",
+        name: "main_languages_pkey",
         unique: true,
         fields: [
           { name: "id" },
