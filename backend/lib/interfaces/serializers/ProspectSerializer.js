@@ -5,7 +5,7 @@ const _serializeSingleProspect = (prospect) => {
     "id" : prospect.id, 
     "id_course" : prospect.id_course, 
     "id_cv_user" : prospect.id_cv_user, 
-    "regis_date" : prospect.emaregis_dateil, 
+    "regis_date" : prospect.regis_date, 
     "state" : prospect.state
   };
 };

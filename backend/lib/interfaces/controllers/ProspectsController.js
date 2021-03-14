@@ -25,35 +25,33 @@ module.exports = {
 
     } catch (error) {
       let message = "An internal server error occurred"
-      if (error.parent != undefined && error.parent.constraint == "uq_email_auth_user")
-        message = "This email is already registered"
-      else
         console.log(error);
       return h.response({ statusCode: 500, error: "Internal Server Error", mensaje: message }).code(500)
     }
   },
 
-/*
+
   async updateProspect(request) {
     // Context
     const serviceLocator = request.server.app.serviceLocator;
 
     // Input
-    const userId = request.params.id;
-    const { full_name, last_name, email, pass, status, admin, parent_id } = request.payload;
+    const prospectId = request.params.id;
+    const { id_course, id_cv_user, regis_date, state} = request.payload;
 
     // Treatment
   
-    const user = await UpdateProspect(userId, full_name, last_name, email, pass, status, admin, parent_id, serviceLocator);
+    const prospect = await UpdateProspect(prospectId, id_course, id_cv_user, regis_date, state, serviceLocator);
+    console.log(prospect);
   
     // Output
-    if (user) {
-      return serviceLocator.userSerializer.serialize(user);
+    if (prospect) {
+      return serviceLocator.prospectSerializer.serialize(prospect);
     } else {
-      return Boom.notFound('User not found');
+      return Boom.notFound('Prospect not found');
     }
   },
-
+/*
   async findUsers(request) {
 
     // Context

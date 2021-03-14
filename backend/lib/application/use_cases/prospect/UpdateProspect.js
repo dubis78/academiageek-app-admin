@@ -1,11 +1,8 @@
 'use strict';
 
-//const User = require('../../domain/AuthUsers');
-//const { generateTimestampUnix, encryptPassword } = require('../utilities/general_functions');
+const Prospect = require('../../../domain/Prospect');
 
-module.exports = async (userId, full_name, last_name, email, pass, status, admin, parent_id, { userRepository }) => {
-  const upgrade_time = await generateTimestampUnix()
-  pass = await encryptPassword(pass)
-  const user = new User(userId, full_name, last_name, email, pass, null, null, status, admin, parent_id, upgrade_time);
-  return userRepository.merge(user);
+module.exports = async (prospectId, id_course, id_cv_user, regis_date, state, { prospectRepository }) => {
+  const prospect = new Prospect(prospectId, id_course, id_cv_user, regis_date, state);
+  return prospectRepository.merge(prospect);
 };

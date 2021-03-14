@@ -27,7 +27,16 @@ module.exports = {
           description: 'Create a prospect',
           tags: ['api'],
         },
-      }/*,
+      },
+      {
+        method: 'PUT',
+        path: '/prospect/{id}',
+        handler: ProspectsController.updateProspect,
+        options: {
+          description: 'Update an existing prospect',
+          tags: ['api'],
+        },
+      },/*,
       {
         method: 'GET',
         path: '/prospect/{id}',
@@ -45,16 +54,7 @@ module.exports = {
           description: 'Delete a prospect',
           tags: ['api'],
         },
-      },
-      {
-        method: 'PUT',
-        path: '/prospect/{id}',
-        handler: ProspectsController.updateProspect,
-        options: {
-          description: 'Update an existing prospect',
-          tags: ['api'],
-        },
-      },*/
+      }*/
     ]);
   }
 };

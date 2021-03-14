@@ -24,15 +24,18 @@ module.exports = class extends ProspectRepository {
 
   }
 
-  async merge(userEntity) {
-    const seqUser = await this.model.findByPk(userEntity.id);
+  async merge(prospectEntity) {
+    const seqProspect = await this.model.findByPk(prospectEntity.id);
 
-    if (!seqUser) return false;
+    if (!seqProspect) return false;
 
-    const { full_name, last_name, email, pass, upgrade_time, last_entry, status, admin, parent_id } = userEntity;
-    await seqUser.update({ full_name, last_name, email, pass, last_entry, status, admin, parent_id, upgrade_time },  {where: {id: userEntity.id}});
+    const { id, id_course, id_cv_user, regis_date, state } = prospectEntity;
+    
+    await seqProspect.update({ id, id_course, id_cv_user, regis_date, state },  {where: {id: prospectEntity.id}});
+    
+    let prospect = new Prospect(seqProspect.id, seqProspect.id_course, seqProspect.id_cv_user, seqProspect.regis_date, seqProspect.state);
 
-    return new User(seqUser.id, seqUser.full_name, seqUser.last_name, seqUser.email, seqUser.pass, seqUser.register_time, seqUser.last_entry, seqUser.status, seqUser.admin, seqUser.parent_id, seqUser.upgrade_time);
+    return  prospect
   }
 
   async remove(userId) {
