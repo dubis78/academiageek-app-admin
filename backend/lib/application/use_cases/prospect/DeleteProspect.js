@@ -1,5 +1,5 @@
 'use strict';
 
-module.exports = (userId, { userRepository }) => {
-  return userRepository.remove(userId);
+module.exports = (prospectId, { prospectRepository }) => {
+  return prospectRepository.remove(prospectId);
 };

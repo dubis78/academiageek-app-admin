@@ -38,31 +38,26 @@ module.exports = class extends ProspectRepository {
     return  prospect
   }
 
-  async remove(userId) {
-    const seqUser = await this.model.findByPk(userId);
-    if (seqUser) {
-      return seqUser.destroy();
+  async remove(prospectId) {
+    const seqProspect = await this.model.findByPk(prospectId);
+    if (seqProspect) {
+      return seqProspect.destroy();
     }
     return false;
   }
 
-  async get(userId) {
-    const seqUser = await this.model.findByPk(userId);
-    if(seqUser)
-      return new User(seqUser.id, seqUser.full_name, seqUser.last_name, seqUser.email, seqUser.pass, seqUser.register_time, seqUser.last_entry, seqUser.status, seqUser.admin, seqUser.parent_id, seqUser.upgrade_time);
+  async get(prospectId) {
+    const seqProspect = await this.model.findByPk(prospectId);
+    if(seqProspect)
+      return new Prospect(seqProspect.id, seqProspect.id_course, seqProspect.id_cv_user, seqProspect.regis_date, seqProspect.state);
     else
       return false;
   }
 
-  async getByEmail(userEmail) {
-    const seqUser = await this.model.findOne({ where: { email: userEmail } });
-    return new User(seqUser.id, seqUser.full_name, seqUser.last_name, seqUser.email, seqUser.pass, seqUser.register_time, seqUser.last_entry, seqUser.status, seqUser.admin, seqUser.parent_id, seqUser.upgrade_time);
-  }
-
   async find() {
-    const seqUsers = await this.model.findAll();
-    return seqUsers.map((seqUser) => {
-      let x = new User(seqUser.id, seqUser.full_name, seqUser.last_name, seqUser.email, seqUser.pass, seqUser.register_time, seqUser.last_entry, seqUser.status, seqUser.admin, seqUser.parent_id);
+    const seqProspects = await this.model.findAll();
+    return seqProspects.map((seqProspect) => {
+      let x = new Prospect(seqProspect.id, seqProspect.id_course, seqProspect.id_cv_user, seqProspect.regis_date, seqProspect.state);
       return x;
     });
   }

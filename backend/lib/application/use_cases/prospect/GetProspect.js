@@ -1,5 +1,5 @@
 'use strict';
 
-module.exports = (userId, { userRepository }) => {
-  return userRepository.get(userId);
+module.exports = (prospectId, { prospectRepository }) => {
+  return prospectRepository.get(prospectId);
 };

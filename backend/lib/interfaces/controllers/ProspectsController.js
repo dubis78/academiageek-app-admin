@@ -51,17 +51,17 @@ module.exports = {
       return Boom.notFound('Prospect not found');
     }
   },
-/*
-  async findUsers(request) {
+
+  async findProspects(request) {
 
     // Context
     const serviceLocator = request.server.app.serviceLocator;
 
     // Treatment
-    const users = await ListProspects(serviceLocator);
+    const prospect = await ListProspects(serviceLocator);
 
     // Output
-    return users.map(serviceLocator.userSerializer.serialize)
+    return prospect.map(serviceLocator.prospectSerializer.serialize);
   },
 
   async getProspect(request) {
@@ -70,17 +70,17 @@ module.exports = {
     const serviceLocator = request.server.app.serviceLocator;
 
     // Input
-    const userId = request.params.id;
+    const prospectId = request.params.id;
 
     // Treatment
-    const user = await GetProspect(userId, serviceLocator);
+    const prospect = await GetProspect(prospectId, serviceLocator);
 
     // Output
-    if (!user) {
-      return Boom.notFound('User not found');
+    if (!prospect) {
+      return Boom.notFound('Prospect not found');
     }
 
-    return serviceLocator.userSerializer.serialize(user);
+    return serviceLocator.prospectSerializer.serialize(prospect);
   },
 
   async deleteProspect(request, h) {
@@ -89,13 +89,13 @@ module.exports = {
     const serviceLocator = request.server.app.serviceLocator;
 
     // Input
-    const userId = request.params.id;
+    const prospectId = request.params.id;
 
     // Treatment
-    await DeleteProspect(userId, serviceLocator);
+    await DeleteProspect(prospectId, serviceLocator);
 
     // Output
     return h.response().code(204);
   },
-*/
+
 };

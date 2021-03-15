@@ -1,5 +1,5 @@
 'use strict';
 
-module.exports = ({ userRepository }) => {
-  return userRepository.find();
+module.exports = ({ prospectRepository }) => {
+  return prospectRepository.find();
 };

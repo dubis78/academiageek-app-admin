@@ -6,25 +6,24 @@ module.exports = {
   name: 'prospects',
   version: '1.0.0',
   register: async (server) => {
-
     server.route([
-      /*{
+      {
         method: 'GET',
         path: '/prospects',
-        handler: ProspectsController.findUsers,
+        handler: ProspectsController.findProspects,
         config: {
         //auth: 'oauth-jwt',
         //  handler: (request) => request.auth.credentials.uid,
-          description: 'List of all prospects',
+          description: 'Lista de todos los prospectos',
           tags: ['api'],
         }
-      },*/
+      },
       {
         method: 'POST',
         path: '/prospects',
         handler: ProspectsController.createProspect,
         options: {
-          description: 'Create a prospect',
+          description: 'Crear un prospecto',
           tags: ['api'],
         },
       },
@@ -33,10 +32,10 @@ module.exports = {
         path: '/prospect/{id}',
         handler: ProspectsController.updateProspect,
         options: {
-          description: 'Update an existing prospect',
+          description: 'Actualizar un prospecto',
           tags: ['api'],
         },
-      },/*,
+      },
       {
         method: 'GET',
         path: '/prospect/{id}',
@@ -54,7 +53,7 @@ module.exports = {
           description: 'Delete a prospect',
           tags: ['api'],
         },
-      }*/
+      }
     ]);
   }
 };
