@@ -1,11 +1,21 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
+import {Link} from "react-router-dom";
 import {Card, Table, Button, Input, Badge} from "antd";
 import { SearchOutlined } from "@ant-design/icons";
+import {connect} from "react-redux";
+
+import {onGetAllProspects} from "../../../appRedux/actions/Prospects";
 
 
-const Prospects = () => {
+const ProspectsTable = ({onGetAllProspects}) => {
+  const [prospects, setProspects] = useState([]);
   const [searchText, setSearchText] = useState('');
   const [searchedColumn, setSearchedColumn] = useState('');
+
+  useEffect(() => {
+    onGetAllProspects();
+    // console.log(`${process.env.REACT_APP_BASE_URL}/users`);
+  },[]);
 
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
@@ -93,7 +103,7 @@ const colsMaker=(cols,filts,configTable)=>{
 
       }
         : {title:col, dataIndex:`col${index}`, fixed:configTable[index],
-          render: index===1 ? (text) => <a>{text}</a> : null,
+          render: index===1 ? (text) => <Link to="/admin/prospect/perfil">{text}</Link> : null,
           ...getColumnSearchProps(col,`col${index}`),
       }
     )})
@@ -161,4 +171,13 @@ const data = [
 };
 
 
-export default Prospects;
+// export default ProspectsTable;
+
+const mapStateToProps = ({prospects}) => {
+  const {prospectList} = prospects;
+  return {prospectList}
+};
+export default connect(mapStateToProps, {
+  onGetAllProspects
+})(ProspectsTable);
+

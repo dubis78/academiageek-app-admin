@@ -78,7 +78,7 @@ const SidebarContent = ({sidebarCollapsed, setSidebarCollapsed}) => {
                     <span><IntlMessages id="sidebar.topics.prospects.training"/></span>
                   </Link>
                 </Menu.Item>
-                <Menu.Item key="components/dataEntry/checkbox">
+                <Menu.Item key="components/dataEntry/checkbo">
                   <Link to="/components/dataEntry/checkbox">
                     <i className="icon icon-files"/>
                     <span><IntlMessages id="sidebar.topics.prospects.graduates"/></span>
@@ -89,12 +89,12 @@ const SidebarContent = ({sidebarCollapsed, setSidebarCollapsed}) => {
                 title={<span><Link to="/main/widgets"><i className="icon icon-editor"/>
                 <IntlMessages id="sidebar.topics.tests"/></Link></span>}>
                 <Menu.Item key="components/dataEntry/checkbx">
-                  <Link to="/components/dataEntry/checkbox">
+                  <Link to="/components/dataEntry/chekbox">
                     <i className="icon icon-files"/>
                     <span><IntlMessages id="sidebar.topics.tests.bank-test"/></span>
                   </Link>
                 </Menu.Item>
-                <Menu.Item key="components/dataEntry/checkbo">
+                <Menu.Item key="components/ataEntry/checkbo">
                   <Link to="/components/dataEntry/checkbox">
                     <i className="icon icon-files"/>
                     <span><IntlMessages id="sidebar.topics.tests.technicals"/></span>

@@ -5,6 +5,7 @@ import Auth from "./Auth";
 import Notes from "./Notes";
 import Contact from "./Contact";
 import Common from "./Common";
+import Prospects from "./Prospects";
 
 
 const createRootReducer = (history) => combineReducers({
@@ -14,6 +15,7 @@ const createRootReducer = (history) => combineReducers({
   notes: Notes,
   contact: Contact,
   common: Common,
+  prospects: Prospects,
 });
 
 export default createRootReducer
