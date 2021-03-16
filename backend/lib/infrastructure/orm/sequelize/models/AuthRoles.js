@@ -19,7 +19,7 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     sequelize,
     tableName: 'auth_roles',
-    schema: 'public',
+    schema: 'auth',
     timestamps: false,
     indexes: [
       {
