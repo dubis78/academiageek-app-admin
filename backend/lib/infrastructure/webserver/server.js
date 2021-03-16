@@ -57,6 +57,7 @@ const createServer = async () => {
     require('./oauth'),
     //require('../../interfaces/routes/hello'),
     require('../../interfaces/routes/private'),
+    require('../../interfaces/routes/commentary'),
     require('../../interfaces/routes/users'),
   ]);
 
