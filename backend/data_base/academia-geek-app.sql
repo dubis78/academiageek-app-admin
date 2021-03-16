@@ -380,6 +380,9 @@ CREATE TYPE "adm"."evidence_type_requeriment" AS ENUM ('URL','File','Ambos');
 DROP TYPE IF EXISTS "adm"."prospects_preference_state";
 CREATE TYPE "adm"."prospects_preference_state" AS ENUM ('aprobado','reprobado','en revision');
 
+DROP TYPE IF EXISTS "adm"."requeriment_fullfiment_state";
+CREATE TYPE "adm"."requeriment_fullfiment_state" AS ENUM ('aprobado','reprobado','en revision');
+
 DROP TYPE IF EXISTS "adm"."status";
 CREATE TYPE "adm"."status" AS ENUM ('activo','inactivo');
 
@@ -891,7 +894,7 @@ CREATE TABLE "adm"."adm_courses"(
 CREATE TABLE "adm"."adm_courses_requeriments"(
 	"id" SERIAL,
 	"id_course" INT NOT NULL,
-	"concept " VARCHAR(100) NOT NULL,
+	"concept" VARCHAR(100) NOT NULL,
 	"description" VARCHAR(100) NOT NULL,
 	"register_date" date NOT NULL,
 	PRIMARY KEY(id)
@@ -904,7 +907,7 @@ CREATE TABLE "adm"."adm_detailed_requeriment"(
 	"id_courses_requeriments" INT NOT NULL,
 	"requeriment_name " VARCHAR(100) NOT NULL,
 	"URL_source" VARCHAR(100) NOT NULL,
-	"evidence_type " "adm"."evidence_type_requeriment" NOT NULL,
+	"evidence_type" "adm"."evidence_type_requeriment" NOT NULL,
 	PRIMARY KEY(id)
 );
 
@@ -914,9 +917,10 @@ CREATE TABLE "adm"."adm_requeriment_fullfiment"(
 	"id" SERIAL,
 	"id_prospect" INT NOT NULL,
 	"id_detailed_req" INT NOT NULL,
-	"url_validation " VARCHAR(100) NOT NULL,
+	"url_validation" VARCHAR(100) NOT NULL,
 	"id_file_validation" int4 NOT NULL,
-	"upload_date " date NOT NULL,
+	"upload_date" date NOT NULL,
+  "state" "adm"."requeriment_fullfiment_state",
 	PRIMARY KEY(id)
 );
 
@@ -926,7 +930,7 @@ CREATE TABLE "adm"."adm_prospects_preference"(
 	"id" SERIAL,
 	"id_course" INT NOT NULL,
 	"id_cv_user" INT NOT NULL,
-	"regis_date " date NOT NULL,
+	"regis_date" date NOT NULL,
 	"state" "adm"."prospects_preference_state" NOT NULL,
 	PRIMARY KEY(id)
 );
