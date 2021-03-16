@@ -1,12 +1,20 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import { Col, Row, Card, Radio, Popover, Form, Input, Button } from "antd";
 import Icon from '@ant-design/icons';
+import {connect} from "react-redux";
+
+import {onUpdateEvidence} from "../../../../appRedux/actions/Evidences";
 
 
-const Certificates = () => {
+const Certificates = ({onUpdateEvidence,evidenceList}) => {
 
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState('');  
+  const [evidenceStatus, setEvidenceStatus] = useState([]);
   const [visible, setVisible] = useState(false);
+
+  useEffect(() => {   
+    console.log(evidenceList)
+  },[]);
 
   const onChange = e => {
     console.log('radio checked', e.target.value);    
@@ -16,7 +24,7 @@ const Certificates = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('holis');
+    onUpdateEvidence({id:'1', commentary:'byeee', status:'OK'});
     setVisible(false);
   }
 
@@ -57,4 +65,15 @@ const Certificates = () => {
   );
 };
 
-export default Certificates;
+
+const mapStateToProps = ({evidences}) => {
+  // const {prospectList} = prospects;
+  const {evidenceList} = evidences;
+  // return {prospectList,evidenceList}
+  return {evidenceList}
+
+};
+export default connect(mapStateToProps, {
+  onUpdateEvidence
+})(Certificates);
+

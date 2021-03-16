@@ -5,15 +5,18 @@ import { SearchOutlined } from "@ant-design/icons";
 import {connect} from "react-redux";
 
 import {onGetAllProspects} from "../../../appRedux/actions/Prospects";
+import {onGetAllEvidences,onUpdateEvidence} from "../../../appRedux/actions/Evidences";
 
 
-const ProspectsTable = ({onGetAllProspects}) => {
+const ProspectsTable = ({onGetAllProspects,onGetAllEvidences,onUpdateEvidence}) => {
   const [prospects, setProspects] = useState([]);
+  const [evidences, setEvidences] = useState([]);
   const [searchText, setSearchText] = useState('');
   const [searchedColumn, setSearchedColumn] = useState('');
 
   useEffect(() => {
     onGetAllProspects();
+    onGetAllEvidences();    
     // console.log(`${process.env.REACT_APP_BASE_URL}/users`);
   },[]);
 
@@ -26,6 +29,7 @@ const ProspectsTable = ({onGetAllProspects}) => {
   const handleReset = clearFilters => {
     clearFilters();
     setSearchText('');
+    onUpdateEvidence({id:'2', commentary:'holis', status:'OK'});
   };
 
   const getColumnSearchProps = (colName,dataIndex) =>({
@@ -173,11 +177,14 @@ const data = [
 
 // export default ProspectsTable;
 
-const mapStateToProps = ({prospects}) => {
+const mapStateToProps = ({prospects,evidences}) => {
   const {prospectList} = prospects;
-  return {prospectList}
+  const {evidenceList} = evidences;
+  return {prospectList,evidenceList}
 };
 export default connect(mapStateToProps, {
-  onGetAllProspects
+  onGetAllProspects,
+  onGetAllEvidences, 
+  onUpdateEvidence
 })(ProspectsTable);
 
