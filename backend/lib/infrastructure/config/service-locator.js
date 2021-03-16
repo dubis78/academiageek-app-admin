@@ -4,14 +4,14 @@ const constants = require('./constants');
 const environment = require('./environment');
 const JwtAccessTokenManager = require('../security/JwtAccessTokenManager');
 const UserSerializer = require('../../interfaces/serializers/UserSerializer');
-const CommentarySerializer = require('../../interfaces/serializers/CommentarySerializer');
+const CommentSerializer = require('../../interfaces/serializers/CommentSerializer');
 
 function buildBeans() {
 
   const beans = {
     accessTokenManager: new JwtAccessTokenManager(),
     userSerializer: new UserSerializer(),
-    commentarySerializer: new CommentarySerializer(),
+    commentSerializer: new CommentSerializer(),
   };
 
   if (environment.database.dialect === constants.SUPPORTED_DATABASE.IN_MEMORY) {
@@ -22,9 +22,9 @@ function buildBeans() {
     beans.userRepository = new UserRepositoryMongo();
   } else if (environment.database.dialect === constants.SUPPORTED_DATABASE.POSTGRES) {
     const UserRepositoryPostgres= require('../repositories/UserRepositoryPostgres');
-    const CommentaryRepositoryPostgres= require('../repositories/requeriment_fullfiment/CommentaryRepositoryPostgres');
+    const CommentRepositoryPostgres= require('../repositories/requeriment_fullfiment/CommentRepositoryPostgres');
     beans.userRepository = new UserRepositoryPostgres();
-    beans.commentaryRepository = new CommentaryRepositoryPostgres();
+    beans.commentRepository = new CommentRepositoryPostgres();
   } else {
     const UserRepositorySQLite= require('../repositories/UserRepositorySQLite');
     beans.userRepository = new UserRepositorySQLite();

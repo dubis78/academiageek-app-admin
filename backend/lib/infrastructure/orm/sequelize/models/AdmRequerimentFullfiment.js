@@ -39,7 +39,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.DATEONLY,
       allowNull: true
     },
-    commentary: {
+    comment: {
       type: DataTypes.STRING(200),
       allowNull: true
     }
