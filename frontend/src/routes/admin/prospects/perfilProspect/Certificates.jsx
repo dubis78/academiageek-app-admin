@@ -8,14 +8,14 @@ import {onUpdateEvidence} from "../../../../appRedux/actions/Evidences";
 
 const Certificates = () => {
   const dispatch = useDispatch();
-  const evidenceList = useSelector(state => state.evidenceList);
+  const evidenceList = useSelector(state => state.evidences.evidenceList);
   const [value, setValue] = useState('');  
   const [evidences, setEvidences] = useState([]);
   const [evidenceStatus, setEvidenceStatus] = useState([]);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {   
-    console.log(evidenceList)
+    console.log(evidenceList);
   },[]);
 
   const onChange = e => {
