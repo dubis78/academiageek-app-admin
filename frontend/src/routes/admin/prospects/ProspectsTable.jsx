@@ -2,21 +2,24 @@ import React, { useState, useEffect } from "react";
 import {Link} from "react-router-dom";
 import {Card, Table, Button, Input, Badge} from "antd";
 import { SearchOutlined } from "@ant-design/icons";
-import {connect} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
 
 import {onGetAllProspects} from "../../../appRedux/actions/Prospects";
 import {onGetAllEvidences,onUpdateEvidence} from "../../../appRedux/actions/Evidences";
 
 
-const ProspectsTable = ({onGetAllProspects,onGetAllEvidences,onUpdateEvidence}) => {
+const ProspectsTable = () => {
   const [prospects, setProspects] = useState([]);
   const [evidences, setEvidences] = useState([]);
   const [searchText, setSearchText] = useState('');
   const [searchedColumn, setSearchedColumn] = useState('');
+  const dispatch = useDispatch();
+  const prospectList = useSelector(state => state.prospects.prospectList);
+  const evidenceList = useSelector(state => state.evidences.evidenceList);
 
   useEffect(() => {
-    onGetAllProspects();
-    onGetAllEvidences();    
+    dispatch(onGetAllProspects());
+    dispatch(onGetAllEvidences());     
     // console.log(`${process.env.REACT_APP_BASE_URL}/users`);
   },[]);
 
@@ -29,7 +32,8 @@ const ProspectsTable = ({onGetAllProspects,onGetAllEvidences,onUpdateEvidence}) 
   const handleReset = clearFilters => {
     clearFilters();
     setSearchText('');
-    onUpdateEvidence({id:'2', commentary:'holis', status:'OK'});
+    console.log(prospectList);
+    dispatch(onUpdateEvidence({id:'1', commentary:'byeee', status:'OK'}));   
   };
 
   const getColumnSearchProps = (colName,dataIndex) =>({
@@ -175,16 +179,16 @@ const data = [
 };
 
 
-// export default ProspectsTable;
+export default ProspectsTable;
 
-const mapStateToProps = ({prospects,evidences}) => {
-  const {prospectList} = prospects;
-  const {evidenceList} = evidences;
-  return {prospectList,evidenceList}
-};
-export default connect(mapStateToProps, {
-  onGetAllProspects,
-  onGetAllEvidences, 
-  onUpdateEvidence
-})(ProspectsTable);
+// const mapStateToProps = ({prospects,evidences}) => {
+//   const {prospectList} = prospects;
+//   const {evidenceList} = evidences;
+//   return {prospectList,evidenceList}
+// };
+// export default connect(mapStateToProps, {
+//   onGetAllProspects,
+//   onGetAllEvidences, 
+//   onUpdateEvidence
+// })(ProspectsTable);
 
