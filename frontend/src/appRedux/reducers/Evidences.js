@@ -27,8 +27,7 @@ export default (state = INIT_STATE, action) => {
       }
     }    
 
-    case UPDATE_EVIDENCE: { 
-      console.log(state.evidenceList)
+    case UPDATE_EVIDENCE: {
       return {
         ...state,
         // evidenceList: state.evidenceList.map(evidence => { evidence.id !== action.evidenceList.id ? evidence : ...evidence, commentary: action.evidenceList.commentary, state: action.evidenceList.state

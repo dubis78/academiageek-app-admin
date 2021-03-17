@@ -23,7 +23,6 @@ export const fetchEvidencesSuccess = (evidenceList) => {
 };
 
 export const onUpdateEvidence = (evidenceList) => {
-  console.log('holis')
   return {
     type: UPDATE_EVIDENCE,
     evidenceList

@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Col, Row, Card, Radio, Popover, Form, Input, Button } from "antd";
 import Icon from '@ant-design/icons';
-import {connect} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
 
 import {onUpdateEvidence} from "../../../../appRedux/actions/Evidences";
 
 
-const Certificates = ({onUpdateEvidence,evidenceList}) => {
-
+const Certificates = () => {
+  const dispatch = useDispatch();
+  const evidenceList = useSelector(state => state.evidenceList);
   const [value, setValue] = useState('');  
+  const [evidences, setEvidences] = useState([]);
   const [evidenceStatus, setEvidenceStatus] = useState([]);
   const [visible, setVisible] = useState(false);
 
@@ -24,7 +26,8 @@ const Certificates = ({onUpdateEvidence,evidenceList}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onUpdateEvidence({id:'1', commentary:'byeee', status:'OK'});
+    dispatch(onUpdateEvidence({id:'1', commentary:'byeee', status:'OK'}));
+
     setVisible(false);
   }
 
@@ -65,15 +68,5 @@ const Certificates = ({onUpdateEvidence,evidenceList}) => {
   );
 };
 
-
-const mapStateToProps = ({evidences}) => {
-  // const {prospectList} = prospects;
-  const {evidenceList} = evidences;
-  // return {prospectList,evidenceList}
-  return {evidenceList}
-
-};
-export default connect(mapStateToProps, {
-  onUpdateEvidence
-})(Certificates);
+export default Certificates;
 
