@@ -12,8 +12,7 @@ const createServer = async () => {
 
   // Create a server with a host and port
   const server = Hapi.server({
-    port: process.env.PORT || 3000,
-    routes: { cors: { origin: ["*"] } }
+    port: process.env.PORT || 3000
   });
 
   // Register vendors plugins
@@ -59,6 +58,7 @@ const createServer = async () => {
     //require('../../interfaces/routes/hello'),
     require('../../interfaces/routes/private'),
     require('../../interfaces/routes/users'),
+    require('../../interfaces/routes/state'),
   ]);
 
   server.app.serviceLocator = require('../../infrastructure/config/service-locator');

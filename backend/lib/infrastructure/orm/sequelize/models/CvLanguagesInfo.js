@@ -24,7 +24,6 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     reading: {
-<<<<<<< HEAD
       type: DataTypes.ENUM("Básico","Intermedio","Avanzado"),
       allowNull: true
     },
@@ -34,17 +33,6 @@ module.exports = function(sequelize, DataTypes) {
     },
     speaking: {
       type: DataTypes.ENUM("Básico","Intermedio","Avanzado"),
-=======
-      type: DataTypes.ENUM("Avanzado","Básico","Intermedio"),
-      allowNull: true
-    },
-    writing: {
-      type: DataTypes.ENUM("Avanzado","Básico","Intermedio"),
-      allowNull: true
-    },
-    speaking: {
-      type: DataTypes.ENUM("Avanzado","Básico","Intermedio"),
->>>>>>> 7b5bd0660146ad3866c43875a6898c650852afec
       allowNull: true
     },
     id_lang_certf: {
