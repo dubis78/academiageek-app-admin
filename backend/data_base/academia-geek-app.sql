@@ -905,7 +905,7 @@ CREATE TABLE "adm"."adm_courses_requeriments"(
 CREATE TABLE "adm"."adm_detailed_requeriment"(
 	"id" SERIAL,
 	"id_courses_requeriments" INT NOT NULL,
-	"requeriment_name " VARCHAR(100) NOT NULL,
+	"requeriment_name" VARCHAR(100) NOT NULL,
 	"URL_source" VARCHAR(100) NOT NULL,
 	"evidence_type" "adm"."evidence_type_requeriment" NOT NULL,
 	PRIMARY KEY(id)
@@ -920,7 +920,11 @@ CREATE TABLE "adm"."adm_requeriment_fullfiment"(
 	"url_validation" VARCHAR(100) NOT NULL,
 	"id_file_validation" int4 NOT NULL,
 	"upload_date" date NOT NULL,
+<<<<<<< HEAD
   "state" "adm"."requeriment_fullfiment_state",
+=======
+  "commentary" VARCHAR(200),
+>>>>>>> 7b5bd0660146ad3866c43875a6898c650852afec
 	PRIMARY KEY(id)
 );
 

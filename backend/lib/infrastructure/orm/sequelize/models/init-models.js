@@ -1,6 +1,9 @@
 var DataTypes = require("sequelize").DataTypes;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 7b5bd0660146ad3866c43875a6898c650852afec
 var _adm_course_cohort = require("./AdmCourseCohort");
 var _adm_course_partners = require("./AdmCoursePartners");
 var _adm_courses = require("./AdmCourses");
@@ -11,7 +14,10 @@ var _adm_prospect_stages = require("./AdmProspectStages");
 var _adm_prospects_preference = require("./AdmProspectsPreference");
 var _adm_requeriment_fullfiment = require("./AdmRequerimentFullfiment");
 var _adm_student_cohort = require("./AdmStudentCohort");
+<<<<<<< HEAD
 >>>>>>> d34c8572adf068f1f02e60ad40e66e0127ec16d6
+=======
+>>>>>>> 7b5bd0660146ad3866c43875a6898c650852afec
 var _auth_assignment_permissions = require("./AuthAssignmentPermissions");
 var _auth_permissions = require("./AuthPermissions");
 var _auth_permissions_section = require("./AuthPermissionsSection");
@@ -21,6 +27,7 @@ var _auth_session = require("./AuthSession");
 var _auth_user_roles = require("./AuthUserRoles");
 var _auth_user_status = require("./AuthUserStatus");
 var _auth_users = require("./AuthUsers");
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 function initModels(sequelize) {
@@ -46,6 +53,29 @@ var _tt_tests_students = require("./TtTestsStudents");
 var _tt_topics = require("./TtTopics");
 
 function initModels(sequelize) {
+=======
+var _cv_academic_info = require("./CvAcademicInfo");
+var _cv_languages_info = require("./CvLanguagesInfo");
+var _cv_personal_info = require("./CvPersonalInfo");
+var _cv_work_info = require("./CvWorkInfo");
+var _main_city = require("./MainCity");
+var _main_country = require("./MainCountry");
+var _main_files_manager = require("./MainFilesManager");
+var _main_interview_schedule = require("./MainInterviewSchedule");
+var _main_languages = require("./MainLanguages");
+var _main_stage = require("./MainStage");
+var _main_state = require("./MainState");
+var _tt_answers = require("./TtAnswers");
+var _tt_bancks_questions = require("./TtBancksQuestions");
+var _tt_difficulties_questions = require("./TtDifficultiesQuestions");
+var _tt_difficulties_tests = require("./TtDifficultiesTests");
+var _tt_options = require("./TtOptions");
+var _tt_tests = require("./TtTests");
+var _tt_tests_students = require("./TtTestsStudents");
+var _tt_topics = require("./TtTopics");
+
+function initModels(sequelize) {
+>>>>>>> 7b5bd0660146ad3866c43875a6898c650852afec
   var adm_course_cohort = _adm_course_cohort(sequelize, DataTypes);
   var adm_course_partners = _adm_course_partners(sequelize, DataTypes);
   var adm_courses = _adm_courses(sequelize, DataTypes);
@@ -56,7 +86,10 @@ function initModels(sequelize) {
   var adm_prospects_preference = _adm_prospects_preference(sequelize, DataTypes);
   var adm_requeriment_fullfiment = _adm_requeriment_fullfiment(sequelize, DataTypes);
   var adm_student_cohort = _adm_student_cohort(sequelize, DataTypes);
+<<<<<<< HEAD
 >>>>>>> d34c8572adf068f1f02e60ad40e66e0127ec16d6
+=======
+>>>>>>> 7b5bd0660146ad3866c43875a6898c650852afec
   var auth_assignment_permissions = _auth_assignment_permissions(sequelize, DataTypes);
   var auth_permissions = _auth_permissions(sequelize, DataTypes);
   var auth_permissions_section = _auth_permissions_section(sequelize, DataTypes);
@@ -67,8 +100,11 @@ function initModels(sequelize) {
   var auth_user_status = _auth_user_status(sequelize, DataTypes);
   var auth_users = _auth_users(sequelize, DataTypes);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
+=======
+>>>>>>> 7b5bd0660146ad3866c43875a6898c650852afec
   var cv_academic_info = _cv_academic_info(sequelize, DataTypes);
   var cv_languages_info = _cv_languages_info(sequelize, DataTypes);
   var cv_personal_info = _cv_personal_info(sequelize, DataTypes);
@@ -117,7 +153,10 @@ function initModels(sequelize) {
   main_files_manager.hasMany(adm_requeriment_fullfiment, { as: "adm_requeriment_fullfiments", foreignKey: "id_file_validation"});
   adm_prospect_stages.belongsTo(main_stage, { as: "id_stage_main_stage", foreignKey: "id_stage"});
   main_stage.hasOne(adm_prospect_stages, { as: "adm_prospect_stage", foreignKey: "id_stage"});
+<<<<<<< HEAD
 >>>>>>> d34c8572adf068f1f02e60ad40e66e0127ec16d6
+=======
+>>>>>>> 7b5bd0660146ad3866c43875a6898c650852afec
   auth_assignment_permissions.belongsTo(auth_permissions, { as: "id_permission_auth_permission", foreignKey: "id_permission"});
   auth_permissions.hasOne(auth_assignment_permissions, { as: "auth_assignment_permission", foreignKey: "id_permission"});
   auth_permissions_section.belongsTo(auth_permissions, { as: "id_permission_auth_permission", foreignKey: "id_permission"});
@@ -137,9 +176,12 @@ function initModels(sequelize) {
   auth_user_roles.belongsTo(auth_users, { as: "id_user_auth_user", foreignKey: "id_user"});
   auth_users.hasMany(auth_user_roles, { as: "auth_user_roles", foreignKey: "id_user"});
 <<<<<<< HEAD
+<<<<<<< HEAD
 
   return {
 =======
+=======
+>>>>>>> 7b5bd0660146ad3866c43875a6898c650852afec
   cv_personal_info.belongsTo(auth_users, { as: "id_user_auth_user", foreignKey: "id_user"});
   auth_users.hasMany(cv_personal_info, { as: "cv_personal_infos", foreignKey: "id_user"});
   cv_academic_info.belongsTo(cv_personal_info, { as: "id_cv_user_cv_personal_info", foreignKey: "id_cv_user"});
@@ -216,7 +258,10 @@ function initModels(sequelize) {
     adm_prospects_preference,
     adm_requeriment_fullfiment,
     adm_student_cohort,
+<<<<<<< HEAD
 >>>>>>> d34c8572adf068f1f02e60ad40e66e0127ec16d6
+=======
+>>>>>>> 7b5bd0660146ad3866c43875a6898c650852afec
     auth_assignment_permissions,
     auth_permissions,
     auth_permissions_section,
@@ -227,7 +272,10 @@ function initModels(sequelize) {
     auth_user_status,
     auth_users,
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 7b5bd0660146ad3866c43875a6898c650852afec
     cv_academic_info,
     cv_languages_info,
     cv_personal_info,
@@ -247,7 +295,10 @@ function initModels(sequelize) {
     tt_tests,
     tt_tests_students,
     tt_topics,
+<<<<<<< HEAD
 >>>>>>> d34c8572adf068f1f02e60ad40e66e0127ec16d6
+=======
+>>>>>>> 7b5bd0660146ad3866c43875a6898c650852afec
   };
 }
 module.exports = initModels;

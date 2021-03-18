@@ -39,8 +39,13 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.DATEONLY,
       allowNull: true
     },
+<<<<<<< HEAD
     state: {
       type: DataTypes.ENUM("en revision","aprobado","reprobado"),
+=======
+    comment: {
+      type: DataTypes.STRING(200),
+>>>>>>> 7b5bd0660146ad3866c43875a6898c650852afec
       allowNull: true
     }
   }, {

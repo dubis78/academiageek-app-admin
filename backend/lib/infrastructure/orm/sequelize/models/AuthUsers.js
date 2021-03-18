@@ -55,21 +55,31 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: true
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 7b5bd0660146ad3866c43875a6898c650852afec
     },
     mobile_phone: {
       type: DataTypes.STRING(30),
       allowNull: true
+<<<<<<< HEAD
 >>>>>>> d34c8572adf068f1f02e60ad40e66e0127ec16d6
+=======
+>>>>>>> 7b5bd0660146ad3866c43875a6898c650852afec
     }
   }, {
     sequelize,
     tableName: 'auth_users',
 <<<<<<< HEAD
+<<<<<<< HEAD
     schema: 'public',
 =======
     schema: 'auth',
 >>>>>>> d34c8572adf068f1f02e60ad40e66e0127ec16d6
+=======
+    schema: 'auth',
+>>>>>>> 7b5bd0660146ad3866c43875a6898c650852afec
     timestamps: false,
     indexes: [
       {
