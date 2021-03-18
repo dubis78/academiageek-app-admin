@@ -15,7 +15,11 @@ module.exports = function(sequelize, DataTypes) {
         key: 'id'
       }
     },
+<<<<<<< HEAD
     'requeriment_name ': {
+=======
+    requeriment_name: {
+>>>>>>> 7b5bd0660146ad3866c43875a6898c650852afec
       type: DataTypes.STRING(100),
       allowNull: false
     },

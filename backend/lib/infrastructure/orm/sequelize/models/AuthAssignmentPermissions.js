@@ -65,7 +65,7 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     sequelize,
     tableName: 'auth_assignment_permissions',
-    schema: 'auth',
+    schema: 'public',
     timestamps: false,
     indexes: [
       {

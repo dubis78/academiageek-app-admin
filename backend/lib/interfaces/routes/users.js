@@ -13,7 +13,7 @@ module.exports = {
         path: '/users',
         handler: UsersController.findUsers,
         config: {
-        //auth: 'oauth-jwt',
+          auth: 'oauth-jwt',
         //  handler: (request) => request.auth.credentials.uid,
           description: 'List all users',
           tags: ['api'],

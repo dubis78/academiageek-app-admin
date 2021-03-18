@@ -54,15 +54,11 @@ module.exports = function(sequelize, DataTypes) {
     upgrade_time: {
       type: DataTypes.INTEGER,
       allowNull: true
-    },
-    mobile_phone: {
-      type: DataTypes.STRING(30),
-      allowNull: true
     }
   }, {
     sequelize,
     tableName: 'auth_users',
-    schema: 'auth',
+    schema: 'public',
     timestamps: false,
     indexes: [
       {
