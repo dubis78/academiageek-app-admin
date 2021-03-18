@@ -1,33 +1,36 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('auth_roles', {
+  return sequelize.define('main_city', {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    role_name: {
-      type: DataTypes.STRING(255),
+    city_name: {
+      type: DataTypes.STRING(100),
       allowNull: true
     },
-    parent: {
+    id_state: {
       type: DataTypes.INTEGER,
       allowNull: true,
-      defaultValue: 0
+      references: {
+        model: 'main_state',
+        key: 'id'
+      }
+    },
+    priority: {
+      type: DataTypes.INTEGER,
+      allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'auth_roles',
-<<<<<<< HEAD
-    schema: 'public',
-=======
-    schema: 'auth',
->>>>>>> d34c8572adf068f1f02e60ad40e66e0127ec16d6
+    tableName: 'main_city',
+    schema: 'main',
     timestamps: false,
     indexes: [
       {
-        name: "auth_roles_pkey",
+        name: "main_city_pkey",
         unique: true,
         fields: [
           { name: "id" },

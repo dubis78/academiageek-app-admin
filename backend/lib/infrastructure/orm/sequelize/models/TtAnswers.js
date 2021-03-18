@@ -1,43 +1,44 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('auth_user_roles', {
-    id: {
+  return sequelize.define('tt_answers', {
+    id_answer: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    id_user: {
+    id_option: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
-        model: 'auth_users',
-        key: 'id'
+        model: 'tt_options',
+        key: 'id_option'
       }
     },
-    id_role: {
+    id_test_person: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
-        model: 'auth_roles',
-        key: 'id'
+        model: 'tt_tests_students',
+        key: 'id_test_students'
       }
+    },
+    date_registration: {
+      type: DataTypes.DATE,
+      allowNull: true,
+      defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
     }
   }, {
     sequelize,
-    tableName: 'auth_user_roles',
-<<<<<<< HEAD
-    schema: 'public',
-=======
-    schema: 'auth',
->>>>>>> d34c8572adf068f1f02e60ad40e66e0127ec16d6
+    tableName: 'tt_answers',
+    schema: 'tt',
     timestamps: false,
     indexes: [
       {
-        name: "auth_user_roles_pkey",
+        name: "tt_answers_pkey",
         unique: true,
         fields: [
-          { name: "id" },
+          { name: "id_answer" },
         ]
       },
     ]

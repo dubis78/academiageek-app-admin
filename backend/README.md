@@ -104,4 +104,8 @@ It may have a constructor to define its dependencies (concrete implementations -
 A use case can call objects in the same layer (such as data repositories) or in the domain layer.
 
 ## Model Generator
+<<<<<<< HEAD
 sequelize-auto -o "./lib/infrastructure/orm/sequelize/models" --cf p -d academia-geek-app -h localhost -u postgres -p 5432 -x postgres -e postgres
+=======
+sequelize-auto -o "./lib/infrastructure/orm/sequelize/models" --cf p -d academia-geek-app -h localhost -u postgres -p 5432 -x adminmaster -e postgres
+>>>>>>> d34c8572adf068f1f02e60ad40e66e0127ec16d6

@@ -1,13 +1,13 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('auth_user_roles', {
+  return sequelize.define('main_files_manager', {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    id_user: {
+    id_auth_user: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
@@ -15,26 +15,31 @@ module.exports = function(sequelize, DataTypes) {
         key: 'id'
       }
     },
-    id_role: {
-      type: DataTypes.INTEGER,
+    file: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
+    assigned: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true
+    },
+    creation_date: {
+      type: DataTypes.DATE,
       allowNull: true,
-      references: {
-        model: 'auth_roles',
-        key: 'id'
-      }
+      defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+    },
+    uq_file: {
+      type: DataTypes.TEXT,
+      allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'auth_user_roles',
-<<<<<<< HEAD
-    schema: 'public',
-=======
-    schema: 'auth',
->>>>>>> d34c8572adf068f1f02e60ad40e66e0127ec16d6
+    tableName: 'main_files_manager',
+    schema: 'main',
     timestamps: false,
     indexes: [
       {
-        name: "auth_user_roles_pkey",
+        name: "main_files_manager_pkey",
         unique: true,
         fields: [
           { name: "id" },

@@ -1,40 +1,44 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('auth_user_roles', {
+  return sequelize.define('adm_course_cohort', {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    id_user: {
+    id_course: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
-        model: 'auth_users',
+        model: 'adm_courses',
         key: 'id'
       }
     },
-    id_role: {
+    cohort_name: {
+      type: DataTypes.STRING(100),
+      allowNull: false
+    },
+    start_date: {
+      type: DataTypes.DATEONLY,
+      allowNull: false
+    },
+    desc: {
+      type: DataTypes.STRING(100),
+      allowNull: false
+    },
+    max_members: {
       type: DataTypes.INTEGER,
-      allowNull: true,
-      references: {
-        model: 'auth_roles',
-        key: 'id'
-      }
+      allowNull: false
     }
   }, {
     sequelize,
-    tableName: 'auth_user_roles',
-<<<<<<< HEAD
-    schema: 'public',
-=======
-    schema: 'auth',
->>>>>>> d34c8572adf068f1f02e60ad40e66e0127ec16d6
+    tableName: 'adm_course_cohort',
+    schema: 'adm',
     timestamps: false,
     indexes: [
       {
-        name: "auth_user_roles_pkey",
+        name: "adm_course_cohort_pkey",
         unique: true,
         fields: [
           { name: "id" },

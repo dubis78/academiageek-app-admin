@@ -14,7 +14,11 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     sequelize,
     tableName: 'auth_permissions',
+<<<<<<< HEAD
     schema: 'public',
+=======
+    schema: 'auth',
+>>>>>>> d34c8572adf068f1f02e60ad40e66e0127ec16d6
     timestamps: false,
     indexes: [
       {
