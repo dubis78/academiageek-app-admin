@@ -28,7 +28,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     result_status: {
-      type: DataTypes.TEXT,
+      type: DataTypes.ENUM("Aprobado","Pendiente","No Aprobado"),
       allowNull: true
     },
     comments: {

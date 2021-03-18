@@ -56,6 +56,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(100),
       allowNull: true
     },
+    socioeconomic_status: {
+      type: DataTypes.ENUM("1","2","3","4","5","6"),
+      allowNull: true
+    },
     citizenship: {
       type: DataTypes.STRING(20),
       allowNull: true
@@ -65,11 +69,11 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     },
     disability: {
-      type: DataTypes.ENUM("Si","No"),
+      type: DataTypes.ENUM("Ninguna","Movilidad","Auditiva o hipoacusia","Visual","Cognitiva","Afectaciones psicosociales"),
       allowNull: true
     },
     population_type: {
-      type: DataTypes.ENUM("Mestizo","Indígena","Afrodescendiente","LGBT+","Desplazado","Otro"),
+      type: DataTypes.ENUM("Indígena","Afrodescendiente","LGBT+","Desplazado","Mujer cabeza de hogar","Migrante no regularizado","Migrante regularizado","Colombiano retornado","Otro"),
       allowNull: true
     },
     residence_phone: {

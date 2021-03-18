@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     stage_process: {
-      type: DataTypes.ENUM("Registro o enrolamiento","Perfilación o postulación","En proceso (Requerimientos)","En Prueba","En Entrevista","Becario","No Aceptado","Egresado","Egresado Asistente","En Deserción","No Completado"),
+      type: DataTypes.ENUM("Registro o enrolamiento","Perfilación o postulación","En proceso (Requerimientos)","En Prueba","En Entrevista","Becario","No Aceptado","Egresado","Asistente","En Deserción","No Completado"),
       allowNull: true
     }
   }, {

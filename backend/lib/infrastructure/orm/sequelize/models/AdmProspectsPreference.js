@@ -17,7 +17,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     id_cv_user: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       references: {
         model: 'cv_personal_info',
         key: 'id'

@@ -58,7 +58,7 @@ const createServer = async () => {
     //require('../../interfaces/routes/hello'),
     require('../../interfaces/routes/private'),
     require('../../interfaces/routes/users'),
-    require('../../interfaces/routes/prospect'),
+    require('../../interfaces/routes/state'),
   ]);
 
   server.app.serviceLocator = require('../../infrastructure/config/service-locator');

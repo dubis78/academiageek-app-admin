@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
         key: 'id'
       }
     },
-    requeriment_name: {
+    'requeriment_name ': {
       type: DataTypes.STRING(100),
       allowNull: false
     },

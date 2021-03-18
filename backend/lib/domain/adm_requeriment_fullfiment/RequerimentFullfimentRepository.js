@@ -2,19 +2,19 @@
 
 module.exports = class {
 
-  persist(domainProspect) {
+  persist(domainRequeriment) {
     throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
   }
 
-  merge(domainProspect) {
+  merge(domainRequeriment) {
     throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
   }
 
-  remove(prospectId) {
+  remove(requerimentId) {
     throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
   }
 
-  get(prospectId) {
+  get(requerimentId) {
     throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
   }
 
