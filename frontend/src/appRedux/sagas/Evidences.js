@@ -18,10 +18,10 @@ const getEvidences = async () =>{
 
 const updateEvidence = async (evidence) => {
   const temp={...evidence}; delete temp.id;
+  console.log(temp,evidence.id);
   try {
     const { data } = await axios.patch(`https://x3n0w.sse.codesandbox.io/evidences/${evidence.id}`,temp);
-    // const { data } = await axios.put(`${process.env.REACT_APP_BASE_URL}/evidences/${evidence.id}`,temp);    
-    console.log(data);
+    // const { data } = await axios.put(`${process.env.REACT_APP_BASE_URL}/evidences/${evidence.id}`,temp);
     return data;   
   } catch (err) {
     return err;
