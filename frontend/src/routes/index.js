@@ -1,7 +1,6 @@
 import React from "react";
 import {Route, Switch} from "react-router-dom";
 
-import Admin from "./admin/index";
 import Components from "./components/index";
 import CustomViews from "./customViews/index";
 import ExtraComponents from "./extraComponents/index";
@@ -13,7 +12,6 @@ import Documents from "./documents/index";
 const App = ({match}) => (
   <div className="gx-main-content-wrapper">
     <Switch>
-    <Route path={`${match.url}admin`} component={Admin}/>
       <Route path={`${match.url}main`} component={Main}/>
       <Route path={`${match.url}components`} component={Components}/>
       <Route path={`${match.url}custom-views`} component={CustomViews}/>
