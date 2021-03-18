@@ -7,7 +7,7 @@ import {fetchError} from "../actions/Common";
 
 const getProspects = async () =>{
   try {
-    const { data } = await axios.get(`http://localhost:3001/users`);
+    const { data } = await axios.get(`https://x3n0w.sse.codesandbox.io/users`);
     // const { data } = await axios.get(`${process.env.REACT_APP_BASE_URL}/users`);    
     console.log(data);
     return data;   
