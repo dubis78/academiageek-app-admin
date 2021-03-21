@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     id_prospect: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       references: {
         model: 'adm_prospects_preference',
         key: 'id'
@@ -17,19 +17,19 @@ module.exports = function(sequelize, DataTypes) {
     },
     id_detailed_req: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       references: {
         model: 'adm_detailed_requeriment',
         key: 'id'
       }
     },
-    url_validation: {
+    'url_validation ': {
       type: DataTypes.STRING(100),
-      allowNull: true
+      allowNull: false
     },
     id_file_validation: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       references: {
         model: 'main_files_manager',
         key: 'id'
@@ -37,11 +37,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     upload_date: {
       type: DataTypes.DATEONLY,
-      allowNull: true
-    },
-    state: {
-      type: DataTypes.ENUM("en revision","aprobado","reprobado"),
-      allowNull: true
+      allowNull: false
     }
   }, {
     sequelize,

@@ -8,11 +8,11 @@ import {useSelector, useDispatch} from "react-redux";
 import {onUpdateEvidence} from "../../../../appRedux/actions/Evidences";
 
 
-const Certificates = () => {
+const Certificates = (props) => {
+  console.log(props)
   const dispatch = useDispatch();
   const evidenceList = useSelector(state => state.evidences.evidenceList);
-  const [value, setValue] = useState('');  
-  const [evidences, setEvidences] = useState([]);
+  const [value, setValue] = useState('');
   const [evidenceStatus, setEvidenceStatus] = useState(Array(evidenceList.length).fill(null));
   const [evidenceText, setEvidenceText] = useState(Array(evidenceList.length).fill(''));
   const [visible, setVisible] = useState(Array(evidenceList.length).fill(false));

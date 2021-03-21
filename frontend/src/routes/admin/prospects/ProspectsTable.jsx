@@ -108,11 +108,16 @@ const colsMaker=(cols,filts,configTable)=>{
         )}),
         // record.col8.indexOf(value) === 0
         onFilter: (value, record) => record[`col${index}`].indexOf(value) === 0
-
       }
-        : {title:col, dataIndex:`col${index}`, fixed:configTable[index],
-          render: index===1 ? (text) => <Link to="/admin/prospect/perfil">{text}</Link> : null,
-          ...getColumnSearchProps(col,`col${index}`),
+      : {title:col, dataIndex:`col${index}`, fixed:configTable[index],
+      render: index===1 
+      ? 
+        (text) =>{
+          const id_name=text.split('_',2);
+          return(<Link to={{pathname:`/admin/members/prospect/perfil/${id_name[0]}`, data:id_name[0]}}>{id_name[1]}</Link>) 
+        }
+      : null,
+      ...getColumnSearchProps(col,`col${index}`),
       }
     )})
   )
@@ -122,8 +127,18 @@ const columns =colsMaker(dataCols,filts,configTable);
 
 const data = [
   {
+    key: '0',
+    col1: '0_Camilo López',
+    col2:'CC',
+    col4: 'M',
+    col5: '18',
+    perfil: '',
+    state: '',
+    req: ''
+  },
+  {
     key: '1',
-    col1: 'Pedro Pérez',
+    col1: '1_Pedro Pérez',
     col2:'CC',
     col4: 'M',
     col5: '18',
@@ -133,7 +148,7 @@ const data = [
   },
   {
     key: '2',
-    col1: 'Juana Martinez',
+    col1: '2_Juana Martinez',
     col2:'TI',
     col4: 'F',
     col5: '22',
@@ -144,7 +159,7 @@ const data = [
   },
   {
     key: '3',
-    col1: 'Mariana Rodríguez',
+    col1: '3_Mariana Rodríguez',
     col2:'CC',
     col4: 'F',
     col5: '16',
@@ -155,7 +170,7 @@ const data = [
   },
   {
     key: '4',
-    col1: 'Daniel Sánchez',
+    col1: '4_Daniel Sánchez',
     col2:'CE',
     col4: 'M',
     col5: '20',
