@@ -1,24 +1,29 @@
 import React, { useState, useEffect } from "react";
+import {useRouteMatch} from "react-router-dom";
 import { Formik, Field } from "formik";
 import {Input, Radio} from "formik-antd";
-import { Col, Row, Card, Form, Popover, Button } from "antd";
-import Icon from '@ant-design/icons';
+import { Col, Row, Card, Popover, Button } from "antd";
 import {useSelector, useDispatch} from "react-redux";
 
 import {onUpdateEvidence} from "../../../../appRedux/actions/Evidences";
 
 
-const Certificates = (props) => {
-  console.log(props)
+
+const Certificates = () => {
   const dispatch = useDispatch();
-  const evidenceList = useSelector(state => state.evidences.evidenceList);
+  const evidenceList = useSelector(({evidences})=> evidences.evidenceList);
+  const [evidences,setEvidences] = useState([]);
   const [value, setValue] = useState('');
   const [evidenceStatus, setEvidenceStatus] = useState(Array(evidenceList.length).fill(null));
   const [evidenceText, setEvidenceText] = useState(Array(evidenceList.length).fill(''));
   const [visible, setVisible] = useState(Array(evidenceList.length).fill(false));
+  const match = useRouteMatch();
+  // console.log(useRouteMatch().params.user);
 
-  useEffect(() => {   
-    ;
+
+  useEffect(() => {  
+    // const test=evidenceList.filter(evidence=> evidence.user_id===match.params.user); 
+    setEvidences(evidenceList.filter(evidence=> evidence.user_id===match.params.user));
   },[]);
 
   const onRadioChange = (e,index) => {
@@ -47,7 +52,9 @@ const Certificates = (props) => {
     setVisible(Array(evidenceList.length).fill(false));
     setEvidenceText((Array(evidenceList.length).fill('')));
   }
-
+  // const test=evidenceList.filter(evidence=> evidence.user_id===match.params.user);
+  // console.log(evidenceList[0])
+  // console.log(test)
   return (
     <Card bordered={false} style={{ }}>
       <Formik
@@ -55,7 +62,7 @@ const Certificates = (props) => {
       >
       {() => (
       <>
-        {evidenceList.map((evidence,index)=>{
+        {evidences.map((evidence,index)=>{
           return(
             <div key={index}>
               <hr/>
@@ -104,4 +111,3 @@ const Certificates = (props) => {
 };
 
 export default Certificates;
-

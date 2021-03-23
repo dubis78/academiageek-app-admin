@@ -9,8 +9,6 @@ const getEvidences = async () =>{
   try {
     const { data } = await axios.get(`https://x3n0w.sse.codesandbox.io/evidences`);
     // const { data } = await axios.get(`${process.env.REACT_APP_BASE_URL}/evidences`);
-    console.log(await axios.get(`http://localhost:3001/state/2`))    
-    console.log(data);
     return data;   
   } catch (err) {
     return err;
@@ -40,7 +38,7 @@ function* fetchEvidencesRequest() {
 
 function* updateEvidenceRequest({evidenceList}) {
   try {
-    const updatedEvidence = yield call(updateEvidence(evidenceList));
+    const updatedEvidence = yield call(updateEvidence,evidenceList);
     yield put(UpdateEvidenceSuccess(updatedEvidence));
   } catch (error) {
     yield put(fetchError(error));

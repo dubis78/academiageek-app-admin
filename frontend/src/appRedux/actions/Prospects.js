@@ -19,18 +19,3 @@ export const fetchProspectsSuccess = (prospectList) => {
     payload: prospectList
   }
 };
-
-
-// export const onAddContact = (contact) => {
-//   return dispatch => database.ref('/contact').push(contact);
-// };
-
-
-// export const onUpdateContact = (id, contact) => {
-
-//   return dispatch => database.ref('/contact').child(id).update(contact);
-// };
-
-// export const onDeleteContact = (id) => {
-//   return dispatch => database.ref('/contact').child(id).remove();
-// };

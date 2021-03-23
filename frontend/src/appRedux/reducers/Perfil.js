@@ -1,12 +1,12 @@
 import {
-  GET_All_PROSPECTS,
-  FETCH_ALL_PROSPECTS_SUCCESS  
+  GET_PERFIL,
+  FETCH_PERFIL_SUCCESS  
 } from "../../constants/ActionTypes";
 
 const INIT_STATE = {
-  prospectList: [{
+  perfil: [{
     id_user:'', course_name:'', name:'', document_type:'',
-    document:'', gender:'', age:'', disability:'', population_type:'',
+    document:'', gender:'', age:'', email:'', disability:'', population_type:'',
     city_name:'', state:'', creation_date:''
   }]
 };
@@ -15,10 +15,11 @@ const INIT_STATE = {
 export default (state = INIT_STATE, action) => {
   switch (action.type) {
 
-    case FETCH_ALL_PROSPECTS_SUCCESS: {
+
+    case FETCH_PERFIL_SUCCESS: {
       return {
         ...state,
-        prospectList: action.payload,
+        perfil: action.payload,
       }
     }
 

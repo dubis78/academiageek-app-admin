@@ -52,8 +52,8 @@ const SidebarContent = ({sidebarCollapsed, setSidebarCollapsed}) => {
             theme={themeType === THEME_TYPE_LITE ? 'lite' : 'dark'}
             mode="inline">
 
-            <MenuItemGroup key="main" className="gx-menu-group" title={<IntlMessages id="sidebar.topics"/>}>
-              <SubMenu key="courses" popupClassName={getNavStyleSubMenuClass(navStyle)}
+            <MenuItemGroup key="/admin/main" className="gx-menu-group" title={<IntlMessages id="sidebar.topics"/>}>
+              <SubMenu key="/admin/main/courses" popupClassName={getNavStyleSubMenuClass(navStyle)}
                 title={<span><Link to="/main/widgets"><i className="icon icon-apps"/>
                 <IntlMessages id="sidebar.topics.courses"/></Link></span>}>
                 <Menu.Item key="table">
@@ -63,25 +63,25 @@ const SidebarContent = ({sidebarCollapsed, setSidebarCollapsed}) => {
                   </Link>
                 </Menu.Item>
               </SubMenu>
-              <SubMenu key="prospects" popupClassName={getNavStyleSubMenuClass(navStyle)}
-                title={<span><Link to="/admin/prospects"><i className="icon icon-user"/>
-                <IntlMessages id="sidebar.topics.prospects"/></Link></span>}>
-                <Menu.Item key="components/dataEntry/checkbox">
-                  <Link to="/components/dataEntry/checkbox">
+              <SubMenu key="/admin/members" popupClassName={getNavStyleSubMenuClass(navStyle)}
+                title={<span><Link to="/admin/members"><i className="icon icon-user"/>
+                <IntlMessages id="sidebar.topics.members"/></Link></span>}>
+                <Menu.Item key="/admin/members/prospects">
+                  <Link to="/admin/members/prospects">
                     <i className="icon icon-files"/>
-                    <span><IntlMessages id="sidebar.topics.prospects.applicants"/></span>
+                    <span><IntlMessages id="sidebar.topics.members.prospects"/></span>
                   </Link>
                 </Menu.Item>
-                <Menu.Item key="components/dataEntry/check">
+                <Menu.Item key="/admin/members/students">
                   <Link to="/components/dataEntry/checkbox">
                     <i className="icon icon-files"/>
-                    <span><IntlMessages id="sidebar.topics.prospects.training"/></span>
+                    <span><IntlMessages id="sidebar.topics.members.students"/></span>
                   </Link>
                 </Menu.Item>
-                <Menu.Item key="components/dataEntry/checkbo">
+                <Menu.Item key="/admin/members/graduates">
                   <Link to="/components/dataEntry/checkbox">
                     <i className="icon icon-files"/>
-                    <span><IntlMessages id="sidebar.topics.prospects.graduates"/></span>
+                    <span><IntlMessages id="sidebar.topics.members.graduates"/></span>
                   </Link>
                 </Menu.Item>
               </SubMenu>
